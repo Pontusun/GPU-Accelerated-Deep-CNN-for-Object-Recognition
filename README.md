@@ -9,7 +9,7 @@ GPU-Accelerated-Deep-CNN-for-Object-Recognition
 ## Project Description:
 In this project, the computation of serveral neural network layers are implemented using CUDA under the caffe framework. Then a 10-class object recognition neural network model, which is composed of the implemented layers, is trained using the cifar-10 dataset. The model achieved a recognition accuracy of 76.21%.
 
-![](images/1.png=800x)
+<img src="images/1.png" width="200">
 
 The layers whose computation is implemented include,
 * Convolutional Layer
