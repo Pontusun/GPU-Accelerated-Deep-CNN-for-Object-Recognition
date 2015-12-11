@@ -173,7 +173,7 @@ __global__ void mat_mul_new2(float * A, float * B, float * C,
 			       int numBRows, int numBColumns,
 			       int numCRows, int numCColumns) {
     __shared__ float ds_M[TILE_WIDTH][ThreadColumn*TILE_WIDTH];
-    __shared__ float ds_N[ThreadColumn*TILE_WIDTH][TILE_WIDTH];
+    __shared__ float ds_N[ThreadColumn*TILE_WIDTH][ThreadColumn*TILE_WIDTH];
     int bx = blockIdx.x, by = blockIdx.y,
        tx = threadIdx.x, ty = threadIdx.y,
        //Row = by * TILE_WIDTH + ty,

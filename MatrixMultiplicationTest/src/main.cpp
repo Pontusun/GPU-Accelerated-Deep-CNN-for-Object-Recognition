@@ -35,7 +35,7 @@ int main(){
 
 	int m = 5;
 	int n = 5;
-	int dim =256;
+	int dim =1024;
 
 	float *hst_A = new float[dim * dim];
 	float *hst_B = new float[dim * dim];
