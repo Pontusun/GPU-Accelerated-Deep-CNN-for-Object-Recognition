@@ -24,21 +24,21 @@ The layers whose computation is implemented include,
 
 ### Time Distribution
 
-![](images/2.png)
+<img src="images/2.png" width="500">
 
-![](images/2_1.png)
+<img src="images/2_1.png" width="300">
 
 ### Matrix Multiplication Optimizition
 
-![](images/3.png)
+<img src="images/3.png" width="800">
 
-![](images/3_1.png)
+<img src="images/3_1.png" width="800">
 
 ### Performance of Different Implementations with Different Nets and Dataset
 
-![](images/4.png)
+<img src="images/4.png" width="800">
 
-![](images/4_1.png)
+<img src="images/4_1.png" width="600">
 
 ## Running the code
 
