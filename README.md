@@ -46,22 +46,22 @@ The layers whose computation is implemented include,
 To install a caffe that contains my implementation, please download the caffe folder in this repo. Then follow the installation instructions here: http://caffe.berkeleyvision.org/installation.html
 
 ### Test my implementation
-My implementations for the layers' computation can be tested using google unit test.
-To test the matrix multiplication, use command build/test/test_all.testbin --gtest_filter='*Gemm*'
-To test the convolutional layer, use command build/test/test_all.testbin --gtest_filter='*Convolution*'
-To test the pooling layer, use command build/test/test_all.testbin --gtest_filter='*Pooling*'
-To test the inner product layer, use command build/test/test_all.testbin --gtest_filter='*Product*'
-To test the rectified linear unit layer, use command build/test/test_all.testbin --gtest_filter='*Pooling*'
-To test the softmax layer, use command build/test/test_all.testbin --gtest_filter='*Softmax*'
+My implementations for the layers' computation can be tested using google unit test.   
+To test the matrix multiplication, use command build/test/test_all.testbin --gtest_filter='*Gemm*'   
+To test the convolutional layer, use command build/test/test_all.testbin --gtest_filter='*   Convolution*'     
+To test the pooling layer, use command build/test/test_all.testbin --gtest_filter='*Pooling*'    
+To test the inner product layer, use command build/test/test_all.testbin --gtest_filter='*Product*'  
+To test the rectified linear unit layer, use command build/test/test_all.testbin --gtest_filter='*Pooling*'   
+To test the softmax layer, use command build/test/test_all.testbin --gtest_filter='*Softmax*'  
 
 ### Train & Test a neural network model
-Run ./data/cifar10/get_cifar10.sh
-Run ./examples/cifar10/create_cifar10.sh
-Run ./examples/cifar10/train_quick.sh
-Then the training should start, all the nessasary information will be printed in the terminal.
+Run ./data/cifar10/get_cifar10.sh    
+Run ./examples/cifar10/create_cifar10.sh   
+Run ./examples/cifar10/train_quick.sh   
+Then the training should start, all the nessasary information will be printed in the terminal.  
 
 ### Compare matrix multiplication performance
-Download the MatrixMultiplicationTest folder, it is a Nsight Ecllipse project that contains different matrix multiplication implementations. Compile and run, the timing information will be displayed at the console.
+Download the MatrixMultiplicationTest folder, it is a Nsight Ecllipse project that contains different matrix multiplication implementations. Compile and run, the timing information will be displayed at the console.  
 
 ## References
 * http://caffe.berkeleyvision.org/
