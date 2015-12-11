@@ -1,0 +1,2 @@
+/Users/Sun/Dropbox/2015Fall/CIS565/Project1-CUDA-Introduction/Project1-Part2/build/CMakeFiles/cis565_nbody.dir
+/Users/Sun/Dropbox/2015Fall/CIS565/Project1-CUDA-Introduction/Project1-Part2/build/src/CMakeFiles/src.dir
