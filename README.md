@@ -14,15 +14,15 @@ In this project, the computation of serveral neural network layers are implement
 </div>
 
 Features implemented include,
-* Convolutional Layer Computation
+* Convolutional Layer Computation     
 	Basically matrix-matrix multiplication and matrix-vector multiplication. The implemented CUDA kernal functions are in math_functions.cu file
-* Pooling Layer Computation
+* Pooling Layer Computation     
 	Average pooling and max pooling are implemented. The CUDA kernal functions are in pooling_layer.cu file.
-* Inner Product Layer Computation
+* Inner Product Layer Computation     
 	The inner product computation is implemented as matrix multiplication, uses the same CUDA kernal functions in math_funcitons.cu as the convolutional layer.
-* Rectified Linear Unit Layer Computation
+* Rectified Linear Unit Layer Computation     
 	A simple non-linear function, the CUDA kernal is in relu_layer.cu file.
-* Softmax Layer Computation
+* Softmax Layer Computation     
 	The softmax function for classification is implemented. The CUDA kernal functions are in softmax_layer.cu file.
 
 ## Performance Analysis:
