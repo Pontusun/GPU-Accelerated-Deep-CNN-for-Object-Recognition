@@ -28,8 +28,8 @@ The layers whose computation is implemented include,
 
 <img src="images/2_1.png" width="300">
 
-The figure shows the computational time distribution for all kinds of layers in the network. Most of the time(96%) is spent on the convolutional layers and inner product layers, both of which are implemented using matrix multiplication. The table shows the exact time(in ms) spent on each kind of layers in one training iteration.   
-From this result, I decided to focus on optimizing the matrix multiplication to achieve better overall network performance.
+The figure shows the computational time distribution for all kinds of layers in the network. Most of the time(96%) is spent on the convolutional layers and inner product layers, both of which are implemented using matrix multiplication. The table shows the exact time(in ms) spent on each kind of layers in one training iteration.      
+From this result, I decided to focus on optimizing the matrix multiplication to achieve better overall network performance.   
 
 ### Matrix Multiplication Optimizition
 
@@ -37,10 +37,10 @@ From this result, I decided to focus on optimizing the matrix multiplication to 
 
 <img src="images/3_1.png" width="600">
 
-The figure above shows the comparison of a naive CPU and serveral different GPU matrix multiplication's performance with regard to matrix size. The CPU computational time increases dramatically as the size increase. The naive GPU implementation would also be slow when the matrix gets large since it access the global memory for each element and that will take lots of GPU memeory bandwith.   
-The first improvement I tried was to use the shared memory on GPU, this method basically divide the matrices into blocks, the threads within each block can share the elements in the block using shared memory. Thus the bandwith need is reduced and the thread can access elements faster. This method is about 4 time faster than the naive one.
-The second improvement is based on the first one, this method also do the computation based on blocks but the block now is a rectangle composed of two blocks in the previous method, thus one thread could compute two elements in the result matrix. This method needs larger shared memory for each block and each thread will be slower, but the number of threads reduced to half. This method is about 40% faster than the previous one. However, my implementation of this method is still buggy, it is fast but the result always has a random error between 1% to 5%. I am still working on debugging.
-The table below the figure shows the exact time (in ms) of each computation.
+The figure above shows the comparison of a naive CPU and serveral different GPU matrix multiplication's performance with regard to matrix size. The CPU computational time increases dramatically as the size increase. The naive GPU implementation would also be slow when the matrix gets large since it access the global memory for each element and that will take lots of GPU memeory bandwith.      
+The first improvement I tried was to use the shared memory on GPU, this method basically divide the matrices into blocks, the threads within each block can share the elements in the block using shared memory. Thus the bandwith need is reduced and the thread can access elements faster. This method is about 4 time faster than the naive one.    
+The second improvement is based on the first one, this method also do the computation based on blocks but the block now is a rectangle composed of two blocks in the previous method, thus one thread could compute two elements in the result matrix. This method needs larger shared memory for each block and each thread will be slower, but the number of threads reduced to half. This method is about 40% faster than the previous one. However, my implementation of this method is still buggy, it is fast but the result always has a random error between 1% to 5%. I am still working on debugging.     
+The table below the figure shows the exact time (in ms) of each computation.   
 
 ### Performance of Different Implementations with Different Nets and Dataset
 
@@ -48,10 +48,10 @@ The table below the figure shows the exact time (in ms) of each computation.
 
 <img src="images/4_1.png" width="400">
 
-This figure shows the computational time of different caffe implementations when doing 100 iteration training. The net gets more and more complex from left to right, and the training data also becomes larger(higer resolution images, more colorful, etc).
-If we look at the original caffe CPU and GPU implementation, it can be seen that as the networks computation becomes more intense, the GPU performance becomes more and more attractive(GPU could be 8.5 times faster).
+This figure shows the computational time of different caffe implementations when doing 100 iteration training. The net gets more and more complex from left to right, and the training data also becomes larger(higer resolution images, more colorful, etc).    
+If we look at the original caffe CPU and GPU implementation, it can be seen that as the networks computation becomes more intense, the GPU performance becomes more and more attractive(GPU could be 8.5 times faster).     
 The two implementation of mine are slower than the original caffe. The improved version is about 2 times slower. But it is still much faster than the CPU version when the data set gets large.
-If I could fix the bug in the other matrix multiplication method, the performance should be really close to the original GPU version.
+If I could fix the bug in the other matrix multiplication method, the performance should be really close to the original GPU version.    
 
 
 ## Running the code
@@ -61,20 +61,45 @@ To install a caffe that contains my implementation, please download the caffe fo
 
 ### Test my implementation
 My implementations for the layers' computation can be tested using google unit test.   
-To test the matrix multiplication, use command build/test/test_all.testbin --gtest_filter='*Gemm*'   
-To test the convolutional layer, use command build/test/test_all.testbin --gtest_filter='*   Convolution*'     
-To test the pooling layer, use command build/test/test_all.testbin --gtest_filter='*Pooling*'    
-To test the inner product layer, use command build/test/test_all.testbin --gtest_filter='*Product*'  
-To test the rectified linear unit layer, use command build/test/test_all.testbin --gtest_filter='*Pooling*'   
-To test the softmax layer, use command build/test/test_all.testbin --gtest_filter='*Softmax*'  
+To test the matrix multiplication, use command
+Run 
+```{r, engine='bash', count_lines}
+build/test/test_all.testbin --gtest_filter='*Gemm*' 
+```    
+To test the convolutional layer, use command 
+```{r, engine='bash', count_lines}
+build/test/test_all.testbin --gtest_filter='*Convolution*'   
+```    
+To test the pooling layer, use command 
+```{r, engine='bash', count_lines}
+build/test/test_all.testbin --gtest_filter='*Pooling*'
+```     
+To test the inner product layer, use command 
+```{r, engine='bash', count_lines}
+build/test/test_all.testbin --gtest_filter='*Product*'
+```   
+To test the rectified linear unit layer, use command
+```{r, engine='bash', count_lines}
+build/test/test_all.testbin --gtest_filter='*Pooling*'   
+```   
+To test the softmax layer, use command
+```{r, engine='bash', count_lines}
+build/test/test_all.testbin --gtest_filter='*Softmax*'
+```    
 
 ### Train & Test a neural network model
 Run 
 ```{r, engine='bash', count_lines}
 ./data/cifar10/get_cifar10.sh
 ```   
-Run ./examples/cifar10/create_cifar10.sh   
-Run ./examples/cifar10/train_quick.sh   
+Run 
+```{r, engine='bash', count_lines}
+./examples/cifar10/create_cifar10.sh 
+```   
+Run 
+```{r, engine='bash', count_lines}
+./examples/cifar10/train_quick.sh
+``` 
 Then the training should start, all the nessasary information will be printed in the terminal.  
 
 ### Compare matrix multiplication performance
