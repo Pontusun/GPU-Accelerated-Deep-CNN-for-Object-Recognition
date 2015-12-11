@@ -67,7 +67,6 @@ To install a caffe that contains my implementation, please download the caffe fo
 ### Test my implementation
 My implementations for the layers' computation can be tested using google unit test.   
 To test the matrix multiplication, use command
-Run 
 ```{r, engine='bash', count_lines}
 build/test/test_all.testbin --gtest_filter='*Gemm*' 
 ```    
@@ -115,5 +114,4 @@ Download the MatrixMultiplicationTest folder, it is a Nsight Ecllipse project th
 * http://ufldl.stanford.edu/tutorial/supervised/ConvolutionalNeuralNetwork/
 * http://devblogs.nvidia.com/parallelforall/using-shared-memory-cuda-cc/
 * Upenn CIS565 lecture slides by Patrick Cozzi
-
 
